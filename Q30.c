@@ -5,28 +5,35 @@ Starting from the current head position, what is the total distance (in cylinder
 */
 
 #include<stdio.h>
+#include<stdlib.h>
 int main(){
     int n;
     int previous,cur;
     printf("Enter number of processes: \n");
     scanf("%d",&n);
-    int queue[n];
+    int queue[n],a[n];
     printf("Enter the Previous Requested position\n");
     scanf("%d",&previous);
     printf("Enter the current header position\n");
     scanf("%d",&cur);
     printf("Enter Processes in sequence: \n");
     for(int j = 0;j<n;j++){
-        scanf("%d",&queue[j]);
+        scanf("%d",&a[j]);
+        if(a[j]>=0 &&a[j]<=4999){
+            queue[j]=a[j];
+        }else{
+            printf("Invalid size\n");
+            exit(0);
+        }
     }
     int total =0 ;
-    if (previous>cur){
+    /**if (previous>cur){
         total = previous+cur;
         
     }
     else{
         total = cur-previous;
-    }
+    }*/
    for (int i = 0;i<n;i++){
         if (queue[i]>cur){
             total += (queue[i]-cur);
@@ -41,3 +48,4 @@ int main(){
     }
     printf("Total distance arm moves: %d\n", total);
 }
+
